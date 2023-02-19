@@ -15,12 +15,19 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->unsignedBigInteger('rolesId');
+            $table->string('userName');
+            $table->string('userEmail')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // this syntax for foreign key
+            $table->foreign('rolesId')
+                  ->references('id')
+                  ->on('roles')
+                  ->onDelete('cascade');
         });
     }
 
