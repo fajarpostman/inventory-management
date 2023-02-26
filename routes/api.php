@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(RolesController::class)->group(function() {
-    Route::post('store', 'storeRoles');
-});
+// Route::controller(RolesController::class)->group(function() {
+//     Route::post('roles/store', 'storeRoles');
+//     Route::get('roles/index', 'index');
+//     Route::put('roles/update/{roles}', 'update', 'update');
+// });
+
+Route::resource('roles', RolesController::class);
 
 // Route::group(['prefix' => 'roles', 'as' => 'roles'], function() {
 //     Route:post('store', [Roles::class, 'storeRoles']);
